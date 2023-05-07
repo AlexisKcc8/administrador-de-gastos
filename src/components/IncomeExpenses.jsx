@@ -14,14 +14,14 @@ export const IncomeExpenses = () => {
       .reduce((acc, item) => acc + item, 0) * -1;
 
   return (
-    <section>
-      <div>
-        <h4>Ingresos</h4>
-        <p>{income}</p>
+    <section className="row text-center">
+      <div className="col-6 ">
+        <h4 className="fs-5">Ingresos</h4>
+        <p style={{ color: "#3d3a53" }}>${income}</p>
       </div>
-      <div>
-        <h4>Gastos</h4>
-        <p>{expense}</p>
+      <div className="col-6  ">
+        <h4 className="fs-5">Gastos</h4>
+        <p style={{ color: "#3d3a53" }}>${expense}</p>
       </div>
     </section>
   );

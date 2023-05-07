@@ -10,12 +10,19 @@ import "./App.css";
 function App() {
   return (
     <GlobalStateProvider>
-      <h2>Hello wolrd</h2>
-      <Header />
-      <IncomeExpenses />
-      <Balance />
-      <TransactionForm />
-      <TransactionList />
+      <section className="container border">
+        <article className="row">
+          <div className="col-12 pt-3 col-md-4">
+            <Header />
+            <IncomeExpenses />
+            <Balance />
+            <TransactionForm />
+          </div>
+          <div className="col-12 pt-3 col-md-8">
+            <TransactionList />
+          </div>
+        </article>
+      </section>
     </GlobalStateProvider>
   );
 }

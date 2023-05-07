@@ -27,20 +27,42 @@ export const TransactionForm = () => {
   return (
     <div>
       <form onSubmit={submitTransaction}>
-        <input
-          type="text"
-          onChange={setDataTransaction}
-          name="description"
-          placeholder="ingresa una descripción"
-        />
-        <input
-          type="number"
-          onChange={setDataTransaction}
-          name="amount"
-          placeholder="0.0"
-          step="0.01"
-        />
-        <button>Añadir</button>
+        <div className="mb-3">
+          <label htmlFor="inputDescription" className="form-label">
+            Description
+          </label>
+          <input
+            type="text"
+            onChange={setDataTransaction}
+            name="description"
+            className="form-control"
+            aria-describedby="descriptionHelp"
+            id="inputDescription"
+            placeholder="Ejem: Pago de agua potable..."
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="inputAmount" className="form-label">
+            Monto
+          </label>
+          <input
+            type="number"
+            onChange={setDataTransaction}
+            name="amount"
+            placeholder="0.0"
+            step="0.01"
+            className="form-control"
+            id="inputAmount"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="btn fw-bold text-white"
+          style={{ backgroundColor: "#3d3a53" }}
+        >
+          Añadir
+        </button>
       </form>
     </div>
   );

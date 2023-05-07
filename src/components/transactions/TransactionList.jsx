@@ -1,24 +1,25 @@
 import { useGlobalState } from "../../hooks/useGlobalState";
+import { ItemTransaction } from "./ItemTransaction";
 
 export const TransactionList = () => {
-  const { transactions, deleteTransaction } = useGlobalState();
+  const { transactions } = useGlobalState();
 
   return (
     <div>
+      <h2>Historial</h2>
       {transactions.length > 0 ? (
-        transactions.map((transaction) => (
-          <div key={transaction.id}>
-            <p>{transaction.description}</p>
-            <span>{transaction.amount}</span>
-            <button
-              onClick={() => {
-                deleteTransaction(transaction.id);
-              }}
-            >
-              Eliminar
-            </button>
-          </div>
-        ))
+        <div
+          style={{
+            minHeight: "10rem",
+            maxHeight: "18rem",
+
+            overflow: "auto",
+          }}
+        >
+          {transactions.map((transaction) => (
+            <ItemTransaction key={transaction.id} transaction={transaction} />
+          ))}
+        </div>
       ) : (
         <p>Sin datos</p>
       )}
