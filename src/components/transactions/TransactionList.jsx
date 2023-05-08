@@ -12,7 +12,6 @@ export const TransactionList = () => {
           style={{
             minHeight: "10rem",
             maxHeight: "18rem",
-
             overflow: "auto",
           }}
         >
@@ -21,7 +20,7 @@ export const TransactionList = () => {
           ))}
         </div>
       ) : (
-        <p>Sin datos</p>
+        <p className="fw-bold">Sin datos</p>
       )}
     </div>
   );

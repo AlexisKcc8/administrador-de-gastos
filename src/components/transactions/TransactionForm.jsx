@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useGlobalState } from "../../hooks/useGlobalState";
+import { useRef } from "react";
 let INITIAL_STATE_TRANSACTION = {
   description: "",
-  amount: 0,
+  amount: "",
 };
 export const TransactionForm = () => {
   const [transaction, setTransaction] = useState(INITIAL_STATE_TRANSACTION);
+  const refInputDescription = useRef();
 
   const GLOBAL_CONTEXT = useGlobalState();
-  const { addTransaction } = GLOBAL_CONTEXT;
 
+  const { addTransaction } = GLOBAL_CONTEXT;
   const setDataTransaction = (event) => {
     let propName = event.target.name;
     let value = event.target.value;
@@ -22,6 +24,12 @@ export const TransactionForm = () => {
   const submitTransaction = (e) => {
     e.preventDefault();
     addTransaction(transaction);
+    refInputDescription.current?.focus();
+    clearInputsForm();
+  };
+
+  const clearInputsForm = () => {
+    setTransaction(INITIAL_STATE_TRANSACTION);
   };
 
   return (
@@ -32,13 +40,16 @@ export const TransactionForm = () => {
             Description
           </label>
           <input
+            ref={refInputDescription}
             type="text"
             onChange={setDataTransaction}
             name="description"
+            value={transaction.description}
             className="form-control"
             aria-describedby="descriptionHelp"
             id="inputDescription"
             placeholder="Ejem: Pago de agua potable..."
+            required
           />
         </div>
         <div className="mb-3">
@@ -49,10 +60,12 @@ export const TransactionForm = () => {
             type="number"
             onChange={setDataTransaction}
             name="amount"
+            value={transaction.amount}
             placeholder="0.0"
             step="0.01"
             className="form-control"
             id="inputAmount"
+            required
           />
         </div>
 

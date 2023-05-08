@@ -17,11 +17,11 @@ export const IncomeExpenses = () => {
     <section className="row text-center">
       <div className="col-6 ">
         <h4 className="fs-5">Ingresos</h4>
-        <p style={{ color: "#3d3a53" }}>${income}</p>
+        <p style={{ color: "#000000", fontWeight: "bold" }}>${income}</p>
       </div>
       <div className="col-6  ">
         <h4 className="fs-5">Gastos</h4>
-        <p style={{ color: "#3d3a53" }}>${expense}</p>
+        <p style={{ color: "#000000", fontWeight: "bold" }}>${expense}</p>
       </div>
     </section>
   );
